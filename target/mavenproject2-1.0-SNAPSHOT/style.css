@@ -1,0 +1,299 @@
+/* ==========================================
+   STYLE1.CSS - PREMIUM LOGIN PORTAL
+   ========================================== */
+
+:root {
+    --bg-dark: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-card: #ffffff;
+    --accent-cyan: #10b981;
+    --accent-glow: rgba(16, 185, 129, 0.15);
+    --text-pure: #333333;
+    --text-muted: #888888;
+    --text-dark: #ffffff;
+    --border-glow: #cbd5e1;
+    --error-box: rgba(239, 68, 68, 0.1);
+    --error-text: #ef4444;
+    --font-stack: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-stack);
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-pure);
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+}
+
+.login-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Left Hero Branding Panel */
+.brand-side {
+    flex: 1;
+    background: linear-gradient(135deg, #0a192f 0%, #112240 100%), 
+                url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200') no-repeat center center;
+    background-size: cover;
+    background-blend-mode: overlay;
+    border-right: 1px solid var(--border-glow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px;
+    position: relative;
+}
+
+@media (max-width: 1024px) {
+    .brand-side { display: none; }
+}
+
+/* Glowing aesthetic mesh orb */
+.brand-side::before {
+    content: '';
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: var(--accent-cyan);
+    filter: blur(140px);
+    opacity: 0.15;
+    top: 15%;
+    left: 10%;
+    pointer-events: none;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: lowercase;
+}
+
+.logo-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent-cyan);
+}
+
+.brand-content h1 {
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.brand-content p {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 440px;
+    line-height: 1.6;
+}
+
+.brand-footer p {
+    font-size: 13px;
+    color: #475569;
+}
+
+/* Right Interactive Form Panel */
+.form-side {
+    flex: 1.1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: var(--bg-surface);
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-header {
+    margin-bottom: 35px;
+}
+
+.form-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+/* Error Banner Card */
+.error-banner {
+    background-color: var(--error-box);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: var(--error-text);
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* Input Configurations */
+.input-group {
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.toggle-link {
+    background: transparent;
+    border: none;
+    color: var(--accent-cyan);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-glow);
+    border-radius: 8px;
+    color: var(--text-pure);
+    font-size: 15px;
+    outline: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.form-options {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 28px;
+}
+
+.forgot a, .register-text a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.forgot a:hover, .register-text a:hover {
+    text-decoration: underline;
+}
+
+/* Call to Action Buttons */
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--accent-cyan);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover { background-color: #00bdf0; }
+.submit-btn:active { transform: scale(0.99); }
+
+/* Structural Content Divider */
+.divider {
+    text-align: center;
+    margin: 32px 0 24px 0;
+    position: relative;
+}
+
+.divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-glow);
+    z-index: 1;
+}
+
+.divider span {
+    background-color: var(--bg-surface);
+    padding: 0 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+/* OAuth Social Panel */
+.social-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    background-color: transparent;
+    border: 1px solid var(--border-glow);
+    color: var(--text-pure);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.social-btn:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.register-text {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+}
