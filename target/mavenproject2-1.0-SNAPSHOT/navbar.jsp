@@ -116,4 +116,52 @@
     
     // Listen for hash changes
     window.addEventListener("hashchange", updateActiveNav);
+
+    // Sidebar Toggle Logic Injection
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarHeader = document.querySelector('.sidebar-header');
+        
+        if (sidebar && sidebarHeader) {
+            // Ensure sidebar header has right alignment for the button
+            sidebarHeader.style.display = 'flex';
+            sidebarHeader.style.alignItems = 'center';
+            sidebarHeader.style.justifyContent = 'space-between';
+
+            // Add toggle button if it doesn't exist
+            if (!sidebarHeader.querySelector('.sidebar-toggle-btn')) {
+                const toggleBtn = document.createElement('span');
+                toggleBtn.className = 'material-symbols-outlined sidebar-toggle-btn';
+                toggleBtn.style.cursor = 'pointer';
+                toggleBtn.style.color = 'var(--text-muted)';
+                toggleBtn.style.fontSize = '24px';
+                toggleBtn.style.marginLeft = 'auto';
+                toggleBtn.style.transition = 'color 0.2s';
+                toggleBtn.innerText = 'menu_open';
+                
+                toggleBtn.onmouseover = () => toggleBtn.style.color = 'var(--accent-green)';
+                toggleBtn.onmouseout = () => toggleBtn.style.color = 'var(--text-muted)';
+
+                sidebarHeader.appendChild(toggleBtn);
+
+                // Handle click to toggle
+                toggleBtn.addEventListener('click', () => {
+                    sidebar.classList.toggle('collapsed');
+                    if (sidebar.classList.contains('collapsed')) {
+                        toggleBtn.innerText = 'menu';
+                        localStorage.setItem('sidebarState', 'collapsed');
+                    } else {
+                        toggleBtn.innerText = 'menu_open';
+                        localStorage.setItem('sidebarState', 'expanded');
+                    }
+                });
+
+                // Restore state from localStorage
+                if (localStorage.getItem('sidebarState') === 'collapsed') {
+                    sidebar.classList.add('collapsed');
+                    toggleBtn.innerText = 'menu';
+                }
+            }
+        }
+    });
 </script>
